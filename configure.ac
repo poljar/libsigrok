@@ -139,6 +139,15 @@ AC_ARG_ENABLE(fx2lafw, AC_HELP_STRING([--enable-fx2lafw],
 	[HW_FX2LAFW="$enableval"],
 	[HW_FX2LAFW=$HW_ENABLED_DEFAULT])
 
+AC_ARG_ENABLE(hameg-hmo, AC_HELP_STRING([--enable-hameg-hmo],
+	[enable Hameg HMO support [default=yes]]),
+	[HW_HAMEG_HMO="$enableval"],
+	[HW_HAMEG_HMO=$HW_ENABLED_DEFAULT])
+AM_CONDITIONAL(HW_HAMEG_HMO, test x$HW_HAMEG_HMO = xyes)
+if test "x$HW_HAMEG_HMO" = "xyes"; then
+	AC_DEFINE(HAVE_HW_HAMEG_HMO, 1, [Hameg HMO support])
+fi
+
 AC_ARG_ENABLE(hantek-dso, AC_HELP_STRING([--enable-hantek-dso],
 	[enable Hantek DSO support [default=yes]]),
 	[HW_HANTEK_DSO="$enableval"],
@@ -537,6 +546,7 @@ AC_CONFIG_FILES([Makefile version.h hardware/Makefile
 		 hardware/chronovu-la8/Makefile
 		 hardware/colead-slm/Makefile
 		 hardware/common/Makefile
+		 hardware/hameg-hmo/Makefile
 		 hardware/ikalogic-scanalogic2/Makefile
 		 hardware/ikalogic-scanaplus/Makefile
 		 hardware/kecheng-kc-330b/Makefile
@@ -604,6 +614,7 @@ echo "  - colead-slm...................... $HW_COLEAD_SLM"
 echo "  - demo............................ $HW_DEMO"
 echo "  - fluke-dmm....................... $HW_FLUKE_DMM"
 echo "  - fx2lafw......................... $HW_FX2LAFW"
+echo "  - hameg-hmo....................... $HW_HAMEG_HMO"
 echo "  - hantek-dso...................... $HW_HANTEK_DSO"
 echo "  - ikalogic-scanalogic2............ $HW_IKALOGIC_SCANALOGIC2"
 echo "  - ikalogic-scanaplus.............. $HW_IKALOGIC_SCANAPLUS"

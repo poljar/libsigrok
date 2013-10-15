@@ -31,6 +31,7 @@ SUBDIRS = \
 	demo \
 	fluke-dmm \
 	fx2lafw \
+	hameg-hmo \
 	hantek-dso \
 	ikalogic-scanalogic2 \
 	ikalogic-scanaplus \
@@ -99,6 +100,10 @@ endif
 
 if HW_FX2LAFW
 libsigrokhardware_la_LIBADD += fx2lafw/libsigrok_hw_fx2lafw.la
+endif
+
+if HW_HAMEG_HMO
+libsigrokhardware_la_LIBADD += hameg-hmo/libsigrok_hw_hameg_hmo.la
 endif
 
 if HW_HANTEK_DSO
